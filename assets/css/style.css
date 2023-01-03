@@ -1,0 +1,127 @@
+/* This is setting up our box sizes to be border box - which makes widths and sizes easier to size */
+
+/* *,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif; */
+/* } */
+
+h2 {
+    font-family: monospace;
+    font-size: 36px;
+    color: pink;
+}
+
+/* 
+The -- is a custom property that contains a value that can be used in other declarations using the var() function.
+A good way to use CSS variables is when it comes to the colors of your design. Instead of copy and paste the same colors over and over again, you can place them in variables.
+The hugh is a degree on the color wheel from 0-360 
+*/
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: cursive;
+    font-size: 24px;
+    color: white;
+}
+
+/* max-width ensures we don't overflow our page with content */
+.container {
+    width: 750px;
+    max-width: 80%;
+    background-color: #666699;
+    display: block;
+    border: 2px solid #5b84ad;
+    border-radius: 25px;
+    margin: 80px auto;
+    text-align: center;
+    font-size: 24px;
+    box-shadow: 0 0px 15px 2px rgba(0, 0, 0, 0.2);
+    transition: 5s;
+
+}
+
+/* The section below is setting up the alignment of the buttons 
+Display-grid is putting the buttons in a grid.
+Grid-template-column is making sure they are in 2 columns and an auto width
+Gap - provides space around each button so they're not smushed
+Margin - Is adding a margin on the bottom so there's space between the answers nad the start/next buttons. 
+*/
+.button-alignment {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 8px;
+    margin: 15px 0;
+}
+
+/* outline: none is removing the outline? IDK what that is */
+.button-style {
+    background-color: #5b84ad;
+    border: 1px:#666699;
+    border-radius: 25px;
+    padding: 5px 10px;
+    color: white;
+    outline;
+    none;
+}
+
+/* WHY DOES THIS NEED TO BE A SEPARATE CLASS? WHY CAN'T IT BE ADDED TO THE ONE ABOVE */
+.button-style:hover {
+    border-color: pink;
+}
+
+/* We're able to put two classes in the same section! Mind blown! */
+.start-button,
+.next-button {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 20px;
+}
+
+/* This controls the placement of the start/next buttons
+I THINK I CAN DELETE THIS */
+.controls {
+    display: flex;
+    justify-content: center;
+}
+
+/* This makes sure nothing is displayed when this class is selected */
+.hide {
+    display: none;
+}
+
+
+
+
+
+/* .quiz {
+    display: block;
+    border-radius: 25px;
+    border: 2px solid #5b84ad;
+    margin: 80px auto;
+    text-align: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 5s;
+    width: 60vw;
+    background-color: #666699;
+}
+
+button {
+    display: block;
+    border-radius: 25px;
+    margin: 15px auto;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 12px;
+    transition: all .5s ease-out;
+    width: 20vw;
+    height: 3vw;
+    background-color: #5b84ad;
+} */
