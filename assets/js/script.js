@@ -1,17 +1,11 @@
-// var questions = [
-//     {
-//         question: 'What is 1+1'
-//     answerOptions: ['one', 'two',]
-//     answerCorrect: 'two',
-//     }
-// ]
+import "assets/js/questions.js";
 
 // This is pulling the ID start button from HTML & the CSS style
-const startButton = document.querySelector('start-button');
+const startButton = document.querySelector('#start-button');
 
-const questionContainerElement = document.querySelector('question-container');
+const questionContainerElement = document.querySelector('#question-container');
 
-const shuffledQuestions, currentQuestionIndex;
+var shuffledQuestions, currentQuestionIndex;
 
 //This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.
 startButton.addEventListener('click', startQuiz)
@@ -19,20 +13,24 @@ startButton.addEventListener('click', startQuiz)
 //When we start the quiz, we want to hide the Start button and show the questions + answers
 function startQuiz() {
     console.log('start!')
-    startButton.classList.add('hide');
-    // shuffledQuestions = questions.sort(() => Math.random() - .5)
-    // currentQuestionIndex = 0
-    questionContainerElement.classList.remove('hide');
+    startButton.classList.add('#hide');
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    questionContainerElement.classList.remove('#hide');
     setNextQuestion()
-
 }
 
 function setNextQuestion() {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
+    console.log("Testing")
 }
 
 function selectAnswer() {
 
+}
+
+function showQuestion(question) {
+    // code display on html
 }
 
 // // Pulling in the variables that will create the quiz
