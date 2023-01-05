@@ -25,8 +25,3 @@ var questions = [
     answerCorrect: 'all of the above'
     }
 ]
-
-export {
-    questions
-}
-    from 'assets/js/questions.js'
