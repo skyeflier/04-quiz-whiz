@@ -1,7 +1,7 @@
 // // Pulling in the variables that will create the quiz
 var startButton = document.getElementById('start-button');
 var questionsEl = document.getElementById('question');
-var answerOptionsEl = document.getElementById('answer-button');
+var answerOptionsEl = document.getElementById('answer-buttons');
 var submitButton = document.getElementById('submit');
 // var nextButton = document.getElementByID('next');
 // var timeEl = document.getElementById('time');
@@ -37,14 +37,13 @@ var questions = [
 ]
 
 // This is pulling the ID start button from HTML & the CSS style
-const startButton = document.querySelector('#start-button');
+// var startButton = document.querySelector('#start-button');
 
-const questionContainerElement = document.querySelector('#question-container');
+var questionContainerElement = document.querySelector('#question-container');
 
 var shuffledQuestions, currentQuestionIndex;
 
-//This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.
-startButton.el.addEventListener('click', startQuiz)
+
 
 //When we start the quiz, we want to hide the Start button and show the questions + answers
 function startQuiz() {
@@ -68,6 +67,9 @@ function selectAnswer() {
 function showQuestion(question) {
     // code display on html
 }
+
+//This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.
+startButton.addEventListener('click', startQuiz)
 
 // // Pulling in the variables that will create the quiz
 // var startButton = document.getElementById('start');
