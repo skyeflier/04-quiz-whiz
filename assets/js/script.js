@@ -1,5 +1,6 @@
-// // Pulling in the variables that will create the quiz
-var startButton = document.getElementById('start-button');
+// Pulling in the variables that will create the quiz
+var startButton = document.getElementById('start-button'); // This is pulling the ID start button from HTML & the CSS style
+var questionContainerElement = document.getElementById('question-container');
 var questionsEl = document.getElementById('question');
 var answerOptionsEl = document.getElementById('answer-buttons');
 var submitButton = document.getElementById('submit');
@@ -7,6 +8,8 @@ var submitButton = document.getElementById('submit');
 // var timeEl = document.getElementById('time');
 // var initialsEl = document.getElementById('initials');
 // var feedbackEl = document.getElementById('feedback');
+
+let shuffledQuestions, currentQuestionIndex
 
 var questions = [
     {
@@ -36,15 +39,6 @@ var questions = [
     },
 ]
 
-// This is pulling the ID start button from HTML & the CSS style
-// var startButton = document.querySelector('#start-button');
-
-var questionContainerElement = document.querySelector('#question-container');
-
-var shuffledQuestions, currentQuestionIndex;
-
-
-
 //When we start the quiz, we want to hide the Start button and show the questions + answers
 function startQuiz() {
     console.log('start!')
@@ -60,26 +54,17 @@ function setNextQuestion() {
     console.log("Testing")
 }
 
-function selectAnswer() {
-
+function showQuestion(question) {
+    questionsEl.innerText = question.question
 }
 
-function showQuestion(question) {
-    // code display on html
+function selectAnswer() {
+
 }
 
 //This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.
 startButton.addEventListener('click', startQuiz)
 
-// // Pulling in the variables that will create the quiz
-// var startButton = document.getElementById('start');
-// var questionsEl = document.getElementById('questions');
-// var answerOptionsEl = document.getElementById('answers');
-// var submitButton = document.getElementById('submit');
-// var nextButton = document.getElementByID('next');
-// var timeEl = document.getElementById('time');
-// var initialsEl = document.getElementById('initials');
-// var feedbackEl = document.getElementById('feedback');
 
 // // Create a function to start the start the quiz
 // function start()
@@ -97,11 +82,7 @@ startButton.addEventListener('click', startQuiz)
 
 // // Create a function for the user to submit their initials & restart the quiz
 
-
-
 // startBtn.onclick = saveHighscore;
 
 // startBtn.onclick = startQuiz;
 // startBtn.addEventListener("onClick", startQuiz)
-
-// // use .hide (display: none) in css to hide the questions 
