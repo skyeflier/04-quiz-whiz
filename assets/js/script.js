@@ -1,15 +1,17 @@
 // Pulling in the variables that will create the quiz
 var startButton = document.getElementById('start-button'); // This is pulling the ID start button from HTML & the CSS style
-var questionContainerElement = document.getElementById('question-container');
+var introContainerEl = document.getElementById('intro-container');
 var questionsEl = document.getElementById('question');
 var answerOptionsEl = document.getElementById('answer-buttons');
 var submitButton = document.getElementById('submit');
-// var nextButton = document.getElementByID('next');
-// var timeEl = document.getElementById('time');
+var endOfQuizEl = document.getElementById('end-of-quiz-container')
+var currentQuestionAndChoicesEl = document.getElementById('current-question-and-choices')
+// var countDownTimerEl = document.getElementById('count-down-timer');
+// var scoreCounterEl = document.getElementById('score-counter');
 // var initialsEl = document.getElementById('initials');
 // var feedbackEl = document.getElementById('feedback');
 
-let shuffledQuestions, currentQuestionIndex
+let currentQuestionIndex = 0
 
 var questions = [
     {
@@ -20,7 +22,7 @@ var questions = [
     {
         question: 'What is CSS an acronym for?',
         answerOptions: ['cascading style sheets', 'classy style superstar', 'corporate silly sheets', 'cascading shallow stream'],
-        answerCorrect: 'two',
+        answerCorrect: 'cascading style sheets',
     },
     {
         question: 'What is JavaScript?',
@@ -30,7 +32,7 @@ var questions = [
     {
         question: 'What is APIs an acronym for?',
         answerOptions: ['athletic program institute', 'application for parenting infants', 'applied interface', 'application programming interface'],
-        answerCorrect: 'two',
+        answerCorrect: 'application programming interface',
     },
     {
         question: 'Why do we code?',
@@ -42,25 +44,78 @@ var questions = [
 //When we start the quiz, we want to hide the Start button and show the questions + answers
 function startQuiz() {
     console.log('start!')
-    startButton.classList.add('#hide');
-    shuffledQuestions = questions.sort(() => Math.random() - .5)
-    currentQuestionIndex = 0
-    questionContainerElement.classList.remove('#hide');
-    setNextQuestion()
+    startButton.classList.add('hide');
+    // currentQuestionIndex = 0
+    introContainerEl.classList.remove('hide');
+    currentQuestionAndChoicesEl.classList.remove('hide');
+    questionsEl.classList.remove('hide');
+    answerOptionsEl.classList.remove('hide');
+    showQuestion()
+    // countDownTimer()
+    // scoreCounter
 }
 
-function setNextQuestion() {
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
-    console.log("Testing")
+function countDownTimer() {
+
 }
 
-function showQuestion(question) {
-    questionsEl.innerText = question.question
+function scoreCounter() {
+
 }
+
+function showQuestion() {
+    var question = questions[currentQuestionIndex]
+    introContainerEl.classList.add('hide');
+    questionsEl.textContent = question.question
+    answerOptionsEl.textContent = ""
+    question.answerOptions.forEach(function (answerOptions, i) {
+        const button = document.createElement('button')
+        button.classList.add('button-style')
+        button.textContent = answerOptions
+        // button.onclick = answerCheck()
+        button.addEventListener('click',
+            answerCheck)
+        answerOptionsEl.appendChild(button)
+    })
+}
+
+function answerCheck(event) {
+    var val = event.target.textContent
+    if (val !== questions[currentQuestionIndex].answerCorrect) {
+        console.log('wrong answer')
+        //deduct time 
+
+    } else {
+        console.log('correct answer')
+        // add points
+    }
+    if (currentQuestionIndex === (questions.length - 1)) {
+        endOfQuiz()
+    } else {
+        currentQuestionIndex++
+        showQuestion()
+    }
+}
+
+function endOfQuiz() {
+    endOfQuizEl.classList.remove('hide');
+    currentQuestionAndChoicesEl.classList.add('hide');
+}
+// SET CONDIDTION IF QUESTION INDEX IS = NUMBER OF QUESTIONS, END QUIZ AND GO TO
 
 function selectAnswer() {
 
 }
+
+
+// localStorageGet Item - to get high scores
+
+// LEFT OFF HERE - TRYING TO CREATE THE NEXT BUTTON, BUT IT'S NOT WORKING....ALSO NEED TO FIGURE OUT HOW TO GET IT TO CLICK TO THE NEXT PAGE
+// const nextButton = document.createElement('next-button')
+// nextButton.innerText = element
+// nextButton.classList.add('button-style')
+
+// need a function
 
 //This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.
 startButton.addEventListener('click', startQuiz)

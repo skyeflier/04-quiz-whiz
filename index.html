@@ -10,34 +10,41 @@
 </head>
 
 <body>
+    <section>
+        <!-- <div>
+            <h3 class="nav-bar" id="score-counter">score</h3>
+        </div>
+        <div>
+            <h3 class="nav-bar" id="count-down-timer">count down timer</h3>
+        </div> -->
+    </section>
     <div class="container">
-        <div id="question-container" class="hide"></div>
-        <div id="question">Question Number X!</div>
-
         <h1 style=" text-align:center;">Coding Quiz Whiz</h1>
-        <p>
-            Hey Whiz! Test your coding knowledge by answering the following questions. Try to answer all questions
-            within 5 minutes. Each question you get wrong will take 15 seconds on your score. Remember, slow & steady
-            wins the
-            race!
-        <div class="controls">
-            <button id="start-button" class="start-button button-style">Start</button>
-            <button id="next-button" class="next-button button-style hide">Next</button>
-
+        <div id="intro-container">
+            <p>
+                Hey Whiz! Test your coding knowledge by answering the following questions. Try to answer all questions
+                within 5 minutes. Each question you get wrong will take 15 seconds on your score. Remember, slow &
+                steady
+                wins the
+                race!
+            <div class="controls">
+                <button id="start-button" class="start-button button-style">Start</button>
+                <button id="next-button" class="next-button button-style hide">Next</button>
+            </div>
+            </p>
         </div>
-        </p>
-
+        <div class="container hide" id="end-of-quiz-container">
+            <h2>End of Quiz!</h2>
+        </div>
         <!-- <div id="answer-buttons" class="button-grid"></div> -->
-        <div id="answer-buttons" class="hide">
-            <button class="button-style">Answer 1</button>
-            <button class="button-style">Answer 2</button>
-            <button class="button-style">Answer 3</button>
-            <button class="button-style">Answer 4</button>
-            <button id="next-button" class="next-button button-style">Next</button>
+        <div class="container hide" id="current-question-and-choices">
+            <div id="question" class="hide"></div>
+            <div id="answer-buttons" class="hide">
+                <!-- <button id="next-button" class="next-button button-style">Next</button> -->
+            </div>
         </div>
-        </script>
     </div>
-    </div>
+
     <script src="./assets/js/script.js"></script>
 </body>
 
