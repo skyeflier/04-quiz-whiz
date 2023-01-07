@@ -98,7 +98,7 @@ function answerCheck(event) {
 
     } else {
         console.log('correct answer')
-        let score = 0;
+        // let score = 0;
         scoreEl.innerHTML = ('Current Score:' + (score + 100));
         // IT ADDS POINTS ON THE FIRST QUESTION AND THEN GOES BACK TO 0 & the time is going crazy
     }
