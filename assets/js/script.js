@@ -7,7 +7,9 @@ var submitButton = document.getElementById('submit');
 var endOfQuizEl = document.getElementById('end-of-quiz-container')
 var currentQuestionAndChoicesEl = document.getElementById('current-question-and-choices')
 var scoreEl = document.getElementById('score');
+let score = 0;
 var timerEl = document.getElementById('time');
+let timeSecond = 50;
 // var initialsEl = document.getElementById('initials');
 // var feedbackEl = document.getElementById('feedback');
 
@@ -53,18 +55,16 @@ function startQuiz() {
     scoreEl.classList.remove('hide');
     timerEl.classList.remove('hide');
     showQuestion()
-    // countDownTimer()
+
+    timerEl.innerHTML = timeSecond;
+    const countDown = setInterval(() => {
+        timeSecond--;
+        timerEl.innerHTML = timeSecond;
+        if (timeSecond <= 0 || timeSecond < 1)
+            clearInterval(countDown)
+    }, 1000)
     // scoreCounter()
 }
-
-
-
-// function countDownTimer() {
-// }
-
-// function scoreCounter() {
-
-// }
 
 function showQuestion() {
     var question = questions[currentQuestionIndex]
@@ -78,15 +78,6 @@ function showQuestion() {
         button.addEventListener('click',
             answerCheck)
         answerOptionsEl.appendChild(button)
-
-        let timeSecond = 50;
-        timerEl.innerHTML = timeSecond;
-        const countDown = setInterval(() => {
-            timeSecond--;
-            timerEl.innerHTML = timeSecond;
-            if (timeSecond <= 0 || timeSecond < 1)
-                clearInterval(countDown)
-        }, 1000) //I MOVED THE TIMER UP HERE, BUT I THINK THE TIMESECOND NEEDS TO BE A GLOBAL VARIABLE, BUT WHEN I DO IT SUBTRACTS 4 SECONDS AT A TIME
     })
 }
 
@@ -94,6 +85,7 @@ function answerCheck(event) {
     var val = event.target.textContent
     scoreEl.textContent = 'Score:';
     if (val !== questions[currentQuestionIndex].answerCorrect) {
+
         console.log('wrong answer')
 
     } else {
