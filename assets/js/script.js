@@ -6,8 +6,8 @@ var answerOptionsEl = document.getElementById('answer-buttons');
 var submitButton = document.getElementById('submit');
 var endOfQuizEl = document.getElementById('end-of-quiz-container')
 var currentQuestionAndChoicesEl = document.getElementById('current-question-and-choices')
-// var countDownTimerEl = document.getElementById('count-down-timer');
-// var scoreCounterEl = document.getElementById('score-counter');
+var scoreEl = document.getElementById('score');
+var timerEl = document.getElementById('time');
 // var initialsEl = document.getElementById('initials');
 // var feedbackEl = document.getElementById('feedback');
 
@@ -50,18 +50,21 @@ function startQuiz() {
     currentQuestionAndChoicesEl.classList.remove('hide');
     questionsEl.classList.remove('hide');
     answerOptionsEl.classList.remove('hide');
+    scoreEl.classList.remove('hide');
+    timerEl.classList.remove('hide');
     showQuestion()
     // countDownTimer()
-    // scoreCounter
+    // scoreCounter()
 }
 
-function countDownTimer() {
 
-}
 
-function scoreCounter() {
+// function countDownTimer() {
+// }
 
-}
+// function scoreCounter() {
+
+// }
 
 function showQuestion() {
     var question = questions[currentQuestionIndex]
@@ -72,22 +75,32 @@ function showQuestion() {
         const button = document.createElement('button')
         button.classList.add('button-style')
         button.textContent = answerOptions
-        // button.onclick = answerCheck()
         button.addEventListener('click',
             answerCheck)
         answerOptionsEl.appendChild(button)
+
+        let timeSecond = 50;
+        timerEl.innerHTML = timeSecond;
+        const countDown = setInterval(() => {
+            timeSecond--;
+            timerEl.innerHTML = timeSecond;
+            if (timeSecond <= 0 || timeSecond < 1)
+                clearInterval(countDown)
+        }, 1000) //I MOVED THE TIMER UP HERE, BUT I THINK THE TIMESECOND NEEDS TO BE A GLOBAL VARIABLE, BUT WHEN I DO IT SUBTRACTS 4 SECONDS AT A TIME
     })
 }
 
 function answerCheck(event) {
     var val = event.target.textContent
+    scoreEl.textContent = 'Score:';
     if (val !== questions[currentQuestionIndex].answerCorrect) {
         console.log('wrong answer')
-        //deduct time 
 
     } else {
         console.log('correct answer')
-        // add points
+        let score = 0;
+        scoreEl.innerHTML = ('Current Score:' + (score + 100));
+        // IT ADDS POINTS ON THE FIRST QUESTION AND THEN GOES BACK TO 0 & the time is going crazy
     }
     if (currentQuestionIndex === (questions.length - 1)) {
         endOfQuiz()
@@ -107,31 +120,10 @@ function selectAnswer() {
 
 }
 
-
 // localStorageGet Item - to get high scores
-
-// LEFT OFF HERE - TRYING TO CREATE THE NEXT BUTTON, BUT IT'S NOT WORKING....ALSO NEED TO FIGURE OUT HOW TO GET IT TO CLICK TO THE NEXT PAGE
-// const nextButton = document.createElement('next-button')
-// nextButton.innerText = element
-// nextButton.classList.add('button-style')
-
-// need a function
 
 //This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.
 startButton.addEventListener('click', startQuiz)
-
-
-// // Create a function to start the start the quiz
-// function start()
-
-// // Create a function to pull in the questions & answers on a new screen
-// function getQuestion()
-
-// // Create a function to run through the questions
-// function clickQuestion()
-
-// // Create a function to end the quiz
-// function endQuiz
 
 // // Create a function for the timer
 
@@ -139,5 +131,3 @@ startButton.addEventListener('click', startQuiz)
 
 // startBtn.onclick = saveHighscore;
 
-// startBtn.onclick = startQuiz;
-// startBtn.addEventListener("onClick", startQuiz)
