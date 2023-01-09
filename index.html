@@ -27,23 +27,21 @@
             </div>
             </p>
         </div>
-        <div class="container button-style hide" id="end-of-quiz-container">
-            <he id="finalScore">
-                </h1>
-                <form>
-                    <input type="text" name="initials" id="initials" placeholder="initials" />
-                    <button type="submit" class="button-style button-alignment" id="saveScoreBtn"
-                        onClick="saveHighScore(event)" disabled>Save</button>
-                </form>
-                <!-- <button id=" end-button" class="end-button button-style">Next</button> -->
-        </div>
-        <!-- <div id="answer-buttons" class="button-grid"></div> -->
         <div class="container hide" id="current-question-and-choices">
             <div id="question" class="hide"></div>
-            <div id="answer-buttons" class="hide button-alignment button-style">
-                <!-- <button id="next-button" class="next-button button-style">Next</button> -->
-            </div>
+            <div id="answer-buttons" class="hide button-alignment button-style"></div>
         </div>
+        <div class="container button-style hide" id="end-of-quiz-container">
+            <h1 id="finalScore"></h1>
+            <!-- <div id="mostRecentScore"></div> -->
+            <form>
+                <input type="text" name="initials" id="initials" placeholder="initials" />
+                <button type="submit" class="button-style button-alignment" id="saveScoreBtn"
+                    onClick="saveHighScore(event)" disabled>Save Your Score</button>
+            </form>
+            <a class="button-style" href="index.html">Try Again!</a>
+        </div>
+
     </div>
 
     <script src="./assets/js/script.js"></script>
