@@ -79,7 +79,7 @@ Margin - Is adding a margin on the bottom so there's space between the answers n
 /* outline: none is removing the outline? IDK what that is */
 .button-style {
     background-color: #5b84ad;
-    border: 1px #666699;
+    border: 3px white;
     border-radius: 25px;
     padding: 5px 10px;
     color: white;
@@ -112,8 +112,26 @@ I THINK I CAN DELETE THIS */
     display: none;
 }
 
+/* Forms */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+input {
+    margin-bottom: 1rem;
+    width: 20rem;
+    padding: 1.5rem;
+    font-size: 1.rem;
+    border: none;
+    box-shadow: 0 0.1rem 1.4rem 0 rbga(86, 105, 235, 0.5);
+}
 
+input::placeholder {
+    color: #aaa;
+}
 
 
 /* .quiz {

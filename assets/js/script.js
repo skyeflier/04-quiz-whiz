@@ -1,19 +1,24 @@
 // Pulling in the variables that will create the quiz
 var startButton = document.getElementById('start-button'); // This is pulling the ID start button from HTML & the CSS style
 var introContainerEl = document.getElementById('intro-container');
+
 var questionsEl = document.getElementById('question');
 var answerOptionsEl = document.getElementById('answer-buttons');
+
 var submitButton = document.getElementById('submit');
 var endOfQuizEl = document.getElementById('end-of-quiz-container')
+
 var currentQuestionAndChoicesEl = document.getElementById('current-question-and-choices')
+let currentQuestionIndex = 0
+
 var scoreEl = document.getElementById('score');
 let score = 0;
+
 var timerEl = document.getElementById('time');
 let timeSecond = 50;
+
 // var initialsEl = document.getElementById('initials');
 // var feedbackEl = document.getElementById('feedback');
-
-let currentQuestionIndex = 0
 
 var questions = [
     {
@@ -43,7 +48,6 @@ var questions = [
     },
 ]
 
-//When we start the quiz, we want to hide the Start button and show the questions + answers
 function startQuiz() {
     console.log('start!')
     startButton.classList.add('hide');
@@ -55,10 +59,10 @@ function startQuiz() {
     timerEl.classList.remove('hide');
     showQuestion()
 
-    timerEl.innerHTML = timeSecond;
+    timerEl.textContent = timeSecond;
     const countDown = setInterval(() => {
         timeSecond--;
-        timerEl.innerHTML = timeSecond;
+        timerEl.textContent = timeSecond;
         if (timeSecond <= 0 || timeSecond < 1)
             clearInterval(countDown)
     }, 1000)
@@ -84,23 +88,21 @@ function answerCheck(event) {
     scoreEl.textContent = "Score:";
     if (val !== questions[currentQuestionIndex].answerCorrect) {
         console.log('wrong answer')
+        if (val !== questions[currentQuestionIndex].answerCorrect) {
+            console.log('WRONG answer')
+            timeSecond -= 10;
+        }
         if (currentQuestionIndex === questions.length - 1) {
             endOfQuiz();
         } else {
             currentQuestionIndex++;
             showQuestion();
         }
-        scoreEl.innerHTML = "Current Score:" + (score - 100);
+        scoreEl.textContent = "Score:" + (score - 100);
         return (score -= 100);
     } else {
         console.log("correct answer");
-        timerEl.innerHTML = "Current Score:" + (score + 100);
-
-        // if (val !== questions[currentQuestionIndex].answerCorrect) {
-        //     console.log('WRONG answer')
-        //     timeSecond = "Time:" + (timeSecond - 10);
-        //     return (timeSecond -= 10);
-        // }
+        scoreEl.textContent = "Score:" + (score + 100);
         if (currentQuestionIndex === questions.length - 1) {
             endOfQuiz();
         } else {
@@ -110,22 +112,11 @@ function answerCheck(event) {
         return (score += 100)
     }
 
-    //     } else {
-    //         console.log('correct answer')
-    //         scoreEl.innerHTML = ('Current Score:' + (score + 100));
-    //     }
-    //     if (currentQuestionIndex === (questions.length - 1)) {
-    //         endOfQuiz()
-    //     } else {
-    //         currentQuestionIndex++
-    //         showQuestion()
-    //     }
-    // }
-
     function endOfQuiz() {
         endOfQuizEl.classList.remove('hide');
         currentQuestionAndChoicesEl.classList.add('hide');
         // if ((timeSecond === 0) || (questions.length - 1)) {
+        //     localStorage.setItem('mostRecentScore', score);
         // initialsEL();
         //GO TO END SCREEN
     }
@@ -145,3 +136,6 @@ startButton.addEventListener('click', startQuiz)
 
 // startBtn.onclick = saveHighscore;
 
+// The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
+// For example, this can be useful when:
+// Clicking on a "Submit" button, prevent it from submitting a form
