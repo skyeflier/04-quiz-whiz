@@ -93,7 +93,8 @@ Margin - Is adding a margin on the bottom so there's space between the answers n
 
 /* We're able to put two classes in the same section! Mind blown! */
 .start-button,
-.next-button {
+.next-button,
+.end-button {
     font-size: 18px;
     font-weight: bold;
     padding: 8px 20px;

@@ -47,7 +47,6 @@ var questions = [
 function startQuiz() {
     console.log('start!')
     startButton.classList.add('hide');
-    // currentQuestionIndex = 0
     introContainerEl.classList.remove('hide');
     currentQuestionAndChoicesEl.classList.remove('hide');
     questionsEl.classList.remove('hide');
@@ -63,7 +62,6 @@ function startQuiz() {
         if (timeSecond <= 0 || timeSecond < 1)
             clearInterval(countDown)
     }, 1000)
-    // scoreCounter()
 }
 
 function showQuestion() {
@@ -82,29 +80,55 @@ function showQuestion() {
 }
 
 function answerCheck(event) {
-    var val = event.target.textContent
-    scoreEl.textContent = 'Score:';
+    var val = event.target.textContent;
+    scoreEl.textContent = "Score:";
     if (val !== questions[currentQuestionIndex].answerCorrect) {
-
         console.log('wrong answer')
-
+        if (currentQuestionIndex === questions.length - 1) {
+            endOfQuiz();
+        } else {
+            currentQuestionIndex++;
+            showQuestion();
+        }
+        scoreEl.innerHTML = "Current Score:" + (score - 100);
+        return (score -= 100);
     } else {
-        console.log('correct answer')
-        // let score = 0;
-        scoreEl.innerHTML = ('Current Score:' + (score + 100));
-        // IT ADDS POINTS ON THE FIRST QUESTION AND THEN GOES BACK TO 0 & the time is going crazy
-    }
-    if (currentQuestionIndex === (questions.length - 1)) {
-        endOfQuiz()
-    } else {
-        currentQuestionIndex++
-        showQuestion()
-    }
-}
+        console.log("correct answer");
+        timerEl.innerHTML = "Current Score:" + (score + 100);
 
-function endOfQuiz() {
-    endOfQuizEl.classList.remove('hide');
-    currentQuestionAndChoicesEl.classList.add('hide');
+        // if (val !== questions[currentQuestionIndex].answerCorrect) {
+        //     console.log('WRONG answer')
+        //     timeSecond = "Time:" + (timeSecond - 10);
+        //     return (timeSecond -= 10);
+        // }
+        if (currentQuestionIndex === questions.length - 1) {
+            endOfQuiz();
+        } else {
+            currentQuestionIndex++;
+            showQuestion();
+        }
+        return (score += 100)
+    }
+
+    //     } else {
+    //         console.log('correct answer')
+    //         scoreEl.innerHTML = ('Current Score:' + (score + 100));
+    //     }
+    //     if (currentQuestionIndex === (questions.length - 1)) {
+    //         endOfQuiz()
+    //     } else {
+    //         currentQuestionIndex++
+    //         showQuestion()
+    //     }
+    // }
+
+    function endOfQuiz() {
+        endOfQuizEl.classList.remove('hide');
+        currentQuestionAndChoicesEl.classList.add('hide');
+        // if ((timeSecond === 0) || (questions.length - 1)) {
+        // initialsEL();
+        //GO TO END SCREEN
+    }
 }
 // SET CONDIDTION IF QUESTION INDEX IS = NUMBER OF QUESTIONS, END QUIZ AND GO TO
 
@@ -112,14 +136,12 @@ function selectAnswer() {
 
 }
 
-// localStorageGet Item - to get high scores
-
 //This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.
 startButton.addEventListener('click', startQuiz)
 
-// // Create a function for the timer
-
 // // Create a function for the user to submit their initials & restart the quiz
+
+// localStorageGet Item - to get high scores
 
 // startBtn.onclick = saveHighscore;
 
