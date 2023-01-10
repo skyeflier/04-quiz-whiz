@@ -19,7 +19,7 @@ let timeSecond = 50;
 
 var questions = [
     {
-        question: 'Which of the following is a self closing tag?',
+        question: 'Which of the following uses a self closing tag?',
         answerOptions: ['paragraph', 'header', 'image', 'video'],
         answerCorrect: 'image',
     },
@@ -34,13 +34,13 @@ var questions = [
         answerCorrect: 'a popular programming language birthed in 1995',
     },
     {
-        question: 'What is APIs an acronym for?',
-        answerOptions: ['athletic program institute', 'application for parenting infants', 'all people interact', 'application programming interface'],
-        answerCorrect: 'application programming interface',
+        question: 'What do you use to create an array?',
+        answerOptions: ['{}', '[]', '()', '||'],
+        answerCorrect: '[]',
     },
     {
-        question: 'Why do we code?',
-        answerOptions: ['because we love learning', 'because we want more money', 'because it opens many doors', 'all of the above'],
+        question: 'Why the heck are we learning JavaScript?',
+        answerOptions: ['we love learning', 'we want more money', 'we want more opportunities', 'all of the above'],
         answerCorrect: 'all of the above',
     },
 ]
@@ -60,8 +60,9 @@ function startQuiz() {
     const countDown = setInterval(() => {
         timeSecond--;
         timerEl.textContent = timeSecond;
-        if (timeSecond <= 0 || timeSecond < 1)
+        if (timeSecond <= 0 || timeSecond < 1) {
             clearInterval(countDown)
+        }
     }, 1000)
 }
 
@@ -108,14 +109,14 @@ function answerCheck(event) {
         }
         return (score += 100)
     }
+}
 
-    function endOfQuiz() {
-        endOfQuizEl.classList.remove('hide');
-        currentQuestionAndChoicesEl.classList.add('hide');
-        if (currentQuestionIndex === questions.length - 1 || (timeSecond == 0)) {
-            localStorage.setItem('mostRecentScore', score);
-            return (endOfQuiz)
-        }
+function endOfQuiz() {
+    endOfQuizEl.classList.remove('hide');
+    currentQuestionAndChoicesEl.classList.add('hide');
+    if (currentQuestionIndex === questions.length - 1 || (timeSecond == 0)) {
+        localStorage.setItem('mostRecentScore', score);
+        return (endOfQuiz)
     }
 }
 
