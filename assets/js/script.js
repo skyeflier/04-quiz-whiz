@@ -6,10 +6,10 @@ var questionsEl = document.getElementById('question');
 var answerOptionsEl = document.getElementById('answer-buttons');
 
 var submitButton = document.getElementById('submit');
-var endOfQuizEl = document.getElementById('end-of-quiz-container')
+var endOfQuizEl = document.getElementById('end-of-quiz-container');
 
-var currentQuestionAndChoicesEl = document.getElementById('current-question-and-choices')
-let currentQuestionIndex = 0
+var currentQuestionAndChoicesEl = document.getElementById('current-question-and-choices');
+let currentQuestionIndex = 0;
 
 var scoreEl = document.getElementById('score');
 let score = 0;
