@@ -17,10 +17,9 @@
         <div id="intro-container">
             <p>
                 Hey Whiz! Test your coding knowledge by answering the following questions. Try to answer all questions
-                within 5 minutes. Each question you get wrong will take 15 seconds on your score. Remember, slow &
-                steady
-                wins the
-                race!
+                within 50 seconds. Each question you get wrong will take 10 seconds on your time. Each question you get
+                correct will add 100 points to your scoreRemember, slow &
+                steady wins the race!
             <div class="controls">
                 <button id="start-button" class="start-button button-style">Start</button>
                 <button id="next-button" class="next-button button-style hide">Next</button>
@@ -32,16 +31,15 @@
             <div id="answer-buttons" class="hide button-alignment button-style"></div>
         </div>
         <div class="container button-style hide" id="end-of-quiz-container">
-            <h1 id="finalScore"></h1>
+            <h1 id="finalScore">Add Your Initials</h1>
             <div id="mostRecentScore"></div>
             <form>
                 <input type="text" name="initials" id="initials" placeholder="initials" />
                 <button type="submit" class="button-style button-alignment" id="saveScoreBtn"
-                    onClick="saveHighScore()">Save Your Score</button>
+                    onClick="saveHighScore(event)">Save Your Score</button>
             </form>
             <a class="button-style" href="index.html">Try Again!</a>
         </div>
-
     </div>
 
     <script src="./assets/js/script.js"></script>

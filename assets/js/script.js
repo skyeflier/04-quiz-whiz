@@ -17,28 +17,25 @@ let score = 0;
 var timerEl = document.getElementById('time');
 let timeSecond = 50;
 
-// var initialsEl = document.getElementById('initials');
-// var feedbackEl = document.getElementById('feedback');
-
 var questions = [
     {
-        question: 'What is HTML an acronym for?',
-        answerOptions: ['hipster text markup language ', 'hyper text markup language', 'hyper toddlers madeup lexicon', 'hysterical teen makeup montage'],
-        answerCorrect: 'hyper text markup language',
+        question: 'Which of the following is a self closing tag?',
+        answerOptions: ['paragraph', 'header', 'image', 'video'],
+        answerCorrect: 'image',
     },
     {
-        question: 'What is CSS an acronym for?',
-        answerOptions: ['cascading style sheets', 'classy style superstar', 'corporate silly sheets', 'cascading shallow stream'],
-        answerCorrect: 'cascading style sheets',
+        question: 'Which data type is supported by JavaScript?',
+        answerOptions: ['Boolean', 'Coolean', 'Doolean', 'Foolean'],
+        answerCorrect: 'Boolean',
     },
     {
         question: 'What is JavaScript?',
-        answerOptions: ['the official language of java the hut', 'the designs baristas put in the foam of your latte', 'a programming language birthed in 1995', 'the cool older sibling to LavaScript'],
-        answerCorrect: 'a programming language birthed in 1995',
+        answerOptions: ['the official language of java the hut', 'the designs baristas put in the foam of your latte', 'a popular programming language birthed in 1995', 'the cool older sibling to LavaScript'],
+        answerCorrect: 'a popular programming language birthed in 1995',
     },
     {
         question: 'What is APIs an acronym for?',
-        answerOptions: ['athletic program institute', 'application for parenting infants', 'applied interface', 'application programming interface'],
+        answerOptions: ['athletic program institute', 'application for parenting infants', 'all people interact', 'application programming interface'],
         answerCorrect: 'application programming interface',
     },
     {
@@ -115,27 +112,13 @@ function answerCheck(event) {
     function endOfQuiz() {
         endOfQuizEl.classList.remove('hide');
         currentQuestionAndChoicesEl.classList.add('hide');
-        // if ((timeSecond === 0) || (questions.length - 1)) {
-        //     localStorage.setItem('mostRecentScore', score);
-        // initialsEL();
-        //GO TO END SCREEN
+        if (currentQuestionIndex === questions.length - 1 || (timeSecond == 0)) {
+            localStorage.setItem('mostRecentScore', score);
+            return (endOfQuiz)
+        }
     }
 }
-// SET CONDIDTION IF QUESTION INDEX IS = NUMBER OF QUESTIONS, END QUIZ AND GO TO
 
-function selectAnswer() {
+function selectAnswer() { }
 
-}
-
-//This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.
-startButton.addEventListener('click', startQuiz)
-
-// // Create a function for the user to submit their initials & restart the quiz
-
-// localStorageGet Item - to get high scores
-
-// startBtn.onclick = saveHighscore;
-
-// The preventDefault() method cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur.
-// For example, this can be useful when:
-// Clicking on a "Submit" button, prevent it from submitting a form
+startButton.addEventListener('click', startQuiz) //This is creating and event (or action) with that button to respond when a user clicks on Start button, and initiates the StartQuiz function.

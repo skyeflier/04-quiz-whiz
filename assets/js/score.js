@@ -8,17 +8,14 @@ const highScores = [];
 // JSON.parse(localStorage.setItem("highScore")) ||
 const maxScore = 3;
 
-// console.log(highScores);
-
-console.log(JSON.parse(localStorage.getItem("highScores")));
-finalScore.innerText = ('mostRecentScore');
+finalScore.innerText = ("Save your" + " " + 'mostRecentScore');
 
 initials.addEventListener("keyup", () => {
     // console.log(initials.value);
     saveScoreBtn.disabled = !initials.value;
 });
 
-function saveHighScore() {
+function saveHighScore(e) { // Need the 'e' to pass the event from the HTML
     console.log(highScores);
     e.preventDefault();
 

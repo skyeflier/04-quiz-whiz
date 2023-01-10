@@ -50,17 +50,12 @@ Margin - Is adding a margin on the bottom so there's space between the answers n
 
 /* outline: none is removing the outline? IDK what that is */
 .button-style {
-    background-color: #5b84ad;
     border: 3px white;
+    background-color: #5b84ad;
     border-radius: 25px;
     padding: 5px 10px;
     color: white;
     outline: none;
-}
-
-/* WHY DOES THIS NEED TO BE A SEPARATE CLASS? WHY CAN'T IT BE ADDED TO THE ONE ABOVE */
-.button-style:hover {
-    border-color: pink;
 }
 
 /* We're able to put two classes in the same section! Mind blown! */
