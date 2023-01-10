@@ -62,6 +62,7 @@ function startQuiz() {
         timerEl.textContent = timeSecond;
         if (timeSecond <= 0 || timeSecond < 1) {
             clearInterval(countDown)
+            endOfQuiz();
         }
     }, 1000)
 }
